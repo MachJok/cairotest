@@ -1,0 +1,3 @@
+/home/crash/Desktop/Projects/Dev/cairobasic/CMakeFiles/rebuild_cache.dir
+/home/crash/Desktop/Projects/Dev/cairobasic/CMakeFiles/edit_cache.dir
+/home/crash/Desktop/Projects/Dev/cairobasic/CMakeFiles/cairobasic.dir

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/crash/Desktop/Projects/Dev/cairobasic",
+  "command": "/usr/bin/c++  -DAPL=0 -DDEBUG -DIBM=0 -DLIN=1 -DXPLM200=1 -DXPLM210=1 -DXPLM300=1 -DXPLM301=1 -I/home/crash/Desktop/Projects/Dev/cairobasic/cairobasic -I/home/crash/Desktop/Projects/Dev/cairobasic/PUBLIC -I/home/crash/Desktop/Projects/Dev/cairobasic/XPLSDK303/CHeaders/XPLM -I/home/crash/Desktop/Projects/Dev/cairobasic/XPLSDK303/CHeaders/Widgets -I/home/crash/Desktop/Projects/Dev/cairobasic/XPLSDK303/CHeaders/Wrappers -I/home/crash/Desktop/Projects/Dev/cairobasic/libacfutils/include -I/home/crash/Desktop/Projects/Dev/cairobasic/libacfutils/lin64/include   --std=c++14 -g   -o CMakeFiles/cairobasic.dir/main.cpp.o -c /home/crash/Desktop/Projects/Dev/cairobasic/main.cpp",
+  "file": "/home/crash/Desktop/Projects/Dev/cairobasic/main.cpp"
+}
+]
