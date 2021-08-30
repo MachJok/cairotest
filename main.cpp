@@ -64,15 +64,12 @@ static FT_Face ft_seven_seg;
 static FT_Face ft_sans;
 FT_Error status;
 const char * fontdir;
-const char * seven_seg_fnt= "./Fonts/DSEG7Classic-Italic.ttf";
+const char * seven_seg_fnt= "./Fonts/DSEG7Classic-Italic-1.ttf";
 const char * sans_fnt= "./Fonts/NotoSansCJK-Bold.ttc";
 int x, y;
 
 void init_font()
 {
-    seven_seg_fnt = "./Fonts/DSEG7Classic-Italic.ttf";
-    sans_fnt = "./Fonts/NotoSansCJK-Bold.ttc"; 
-
     status = FT_Init_FreeType(&value);
     if (status != 0) 
     {
@@ -192,7 +189,7 @@ void e_w_light(bool on, bool east, bool test)
     }  
 }
 
-void left_display(char *display, cdu_t *cdu)
+void left_display(cdu_t *cdu)
 {   
 
     //display mask for blank segments
@@ -261,11 +258,11 @@ void left_display(char *display, cdu_t *cdu)
         cairo_set_source_rgb(cr, text_color.red, text_color.green, text_color.blue); //set to "on" color
         cairo_move_to(cr, 124, 157); //move to start of display line 
 
-        char buffer[2];
+        char buffer[1];
 
         for (int i = 0; i < 5; ++i)
         {
-            snprintf(buffer, sizeof(buffer), "%c", display[i]);
+            sprintf(buffer, "%c", cdu->displays.left_digits[i]);
             cairo_show_text(cr, buffer);
         }  
     }
@@ -274,7 +271,7 @@ void left_display(char *display, cdu_t *cdu)
      
 }
 
-void right_display(char *display, cdu_t *cdu)
+void right_display(cdu_t *cdu)
 {
     cairo_set_font_face(cr, seven_seg);
     cairo_set_font_size(cr, 97.0);
@@ -325,14 +322,13 @@ void right_display(char *display, cdu_t *cdu)
 
         cairo_move_to(cr, 638, 157);
         cairo_set_source_rgb(cr, text_color.red, text_color.green, text_color.blue); //set to "on" color    
-        char buffer[2];
+        char buffer[1];
 
         for (int i = 0; i < 6; ++i)
         {
-            snprintf(buffer, sizeof(buffer), "%c", display[i]);
+            sprintf(buffer, "%c", cdu->displays.right_digits[i]);
             cairo_show_text(cr, buffer);
-        }
-
+        }  
     }
     
     e_w_light(cdu->displays.ew_on, cdu->displays.east_on, cdu->test_pressed);
@@ -801,35 +797,57 @@ void screen_format(cdu_t *cdu)
     }
 }
 
-void load_digits(cdu_t* cdu, char* digits_l, char* digits_r)
+void load_digits(cdu_t* cdu, char display_str[14])
 {
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 14; ++i)
     {
-        cdu->displays.left_digits[i] = digits_l[i];
+        if (i < 5)
+        {
+            cdu->displays.left_digits[i] = display_str[i];
+        }
+
+        if (i > 4 && i < 11)
+        {
+            cdu->displays.right_digits[i-5] = display_str[i];
+        }
+
+        if (i == 11 && display_str[i] == 'N')
+        {
+            cdu->displays.north_on = true;
+        }
+        if (i == 11 && display_str[i] == 'S')
+        {
+            cdu->displays.north_on = false;
+        }
+        if (i == 12 && display_str[i] == 'E')
+        {
+            cdu->displays.east_on = true;
+        }
+        if (i == 12 && display_str[i] == 'W')
+        {
+            cdu->displays.east_on = false;
+        }        
     }
-    for (int i = 0; i < 6; ++i)
-    {
-        cdu->displays.right_digits[i] = digits_r[i];
-    }    
 }
 
 void test_mode_set(cdu_t *cdu)
 {
 
-    char left_test[5];
-    char right_test[6];
+    char test_vals[14];
 
-    for(int i = 0; i < 5; ++i)
+    for(int i = 0; i < 14; ++i)
     {
-        left_test[i] = '8';
+        if(i != 13)
+        {
+            test_vals[i] = '8';
+        }
+        if (i == 14)
+        {
+            test_vals[i] = '\0';
+        }
     }
 
-    for(int i = 0; i < 6; ++i)
-    {
-        right_test[i] = '8';
-    }        
-
-    load_digits(cdu, left_test, right_test);
+    load_digits(cdu, test_vals);
 
     cdu->displays.left_degrees = true;
     cdu->displays.right_degrees = true;
@@ -855,8 +873,8 @@ void test_mode_set(cdu_t *cdu)
     cdu->keypad_on = true;
 
 
-    left_display(left_test, cdu);
-    right_display(right_test, cdu);
+    left_display(cdu);
+    right_display(cdu);
     from_display(cdu);
     to_display(cdu);
     hold_lit(cdu);
@@ -871,7 +889,7 @@ void test_mode_set(cdu_t *cdu)
 
 }
 
-void display_logic(cdu_t *cdu, char* left_vals, char* right_vals)
+void display_logic(cdu_t *cdu, char disp_vals[14])
 {
     if(cdu->test_pressed)
     {
@@ -880,7 +898,7 @@ void display_logic(cdu_t *cdu, char* left_vals, char* right_vals)
     else if (!cdu->test_pressed)
     {
         screen_format(cdu);
-        load_digits(cdu, left_vals, right_vals);
+        load_digits(cdu, disp_vals);
         hold_lit(cdu);
         remote_lit(cdu);
         insert_lit(cdu);
@@ -897,7 +915,7 @@ void display_logic(cdu_t *cdu, char* left_vals, char* right_vals)
 int main ()
 {
     //write the data to the CDU display
-    cdu_data.data_sel = TKGS;
+    cdu_data.data_sel = STS;
     cdu_data.displays.left_display_on = true;
     cdu_data.displays.right_display_on = true;
     cdu_data.test_pressed = false;
@@ -908,10 +926,10 @@ int main ()
     cdu_data.displays.nav_to = 2;
     cdu_data.hold_pressed = false;
 
-    char left_vals[5] ={'1', '2', '3', '4', '5'};
-    char right_vals[6] = {'6', '7', '8', '9', '0', '1'};
+    char display_vals[14] = {'!', '!', '3', '5', '9', '0', '!', '!', '!', '5', '5', 'S', 'W', '\0'};
 
-    load_digits(&cdu_data, left_vals, right_vals);
+
+    //load_digits(&cdu_data, display_vals);
 
     cr = cairo_create(surface);
     init_font();
@@ -930,15 +948,15 @@ int main ()
     data_selector(&cdu_data);
     screen_format(&cdu_data);
     brightness_knob(&cdu_data);
-    display_logic(&cdu_data, left_vals, right_vals);
+    display_logic(&cdu_data, display_vals);
     auto_man(&cdu_data);
 
     //buttons
 
 
     //displays
-    left_display(left_vals, &cdu_data);
-    right_display(right_vals, &cdu_data);
+    left_display(&cdu_data);
+    right_display(&cdu_data);
     from_display(&cdu_data);
     to_display(&cdu_data);
 

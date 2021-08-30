@@ -1,1 +1,1 @@
-/usr/bin/c++   --std=c++14 -g  -rdynamic CMakeFiles/cairobasic.dir/main.cpp.o  -o cairobasic  libacfutils/lin64/lib/libacfutils.a -lcairo -lfreetype 
+/usr/bin/c++   --std=c++14 -Wformat-truncation=0 -Wformat-overflow=0 -g  -rdynamic CMakeFiles/cairobasic.dir/main.cpp.o  -o cairobasic  libacfutils/lin64/lib/libacfutils.a -lcairo -lfreetype 

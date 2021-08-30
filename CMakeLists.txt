@@ -44,8 +44,8 @@ add_executable(cairobasic
                 ${ALL_SRC})
                 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W -Wall -Wextra -Werror -pedantic --std=c11 \
-    -Wno-unused-local-typedefs -Wno-missing-field-initializers")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++14" )
+    -Wno-unused-local-typedefs -Wno-missing-field-initializers ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++14 -Wformat-truncation=0 -Wformat-overflow=0" )
 
 add_definitions(-DXPLM200=1 -DXPLM210=1 -DXPLM300=1 -DXPLM301=1)
 if(WIN32)
