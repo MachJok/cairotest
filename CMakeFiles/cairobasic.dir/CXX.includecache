@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/crash/Desktop/Projects/Dev/cairobasic/cr_surfaces.h
+cairo.h
+-
 
 /home/crash/Desktop/Projects/Dev/cairobasic/main.cpp
 acfutils/geom.h
