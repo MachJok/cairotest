@@ -2,7 +2,6 @@
 #include "cairo-ft.h"
 #include "freetype/fttypes.h"
 #include <cairo.h>
-#include <acfutils/mt_cairo_render.h>
 #include <acfutils/math.h>
 #include <cmath>
 #include <ft2build.h>
@@ -39,9 +38,8 @@ static FT_Library value;
 static FT_Face ft_seven_seg;
 static FT_Face ft_sans;
 FT_Error status;
-const char * fontdir;
-const char * seven_seg_fnt= "./Fonts/DSEG7Classic-Italic-1.ttf";
-const char * sans_fnt= "./Fonts/NotoSansCJK-Bold.ttc";
+
+
 int x, y;
 
 void init_font()
@@ -891,18 +889,19 @@ void display_logic(cdu_t *cdu, char disp_vals[14])
 int main ()
 {
     //write the data to the CDU display
-    cdu_data.data_sel = STS;
+    cdu_data.data_sel = WIND;
     cdu_data.displays.left_display_on = true;
     cdu_data.displays.right_display_on = true;
     cdu_data.test_pressed = false;
-    cdu_data.wpt_num = 0;
+    cdu_data.wpt_num = 5;
     cdu_data.brightness_knob_ang = 0;
 
     cdu_data.displays.nav_from = 1;
     cdu_data.displays.nav_to = 2;
     cdu_data.hold_pressed = false;
+    cdu_data.hold_on = false;
 
-    char display_vals[14] = {'!', '!', '3', '5', '9', '0', '!', '!', '!', '5', '5', 'S', 'W', '\0'};
+    char display_vals[14] = {'!', '!', '3', '5', '9', '!', '!', '!', '2', '9', '9', 'S', 'E', '\0'};
 
 
     //load_digits(&cdu_data, display_vals);

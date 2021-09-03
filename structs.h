@@ -17,7 +17,7 @@ enum data_selector_enum
     XTK = 75,
     POS = 111,
     WAYPT = 145,
-    DIS = 177,
+    DIS = 183,
     WIND = 220,
     STS = 255
 };
@@ -93,7 +93,8 @@ struct cdu_t
 
 
 
-
+const char * seven_seg_fnt= "./Fonts/DSEG7Classic-Italic-1.ttf";
+const char * sans_fnt= "./Fonts/NotoSansCJK-Bold.ttc";
 cdu_t cdu_data = {0};
 color_t text_color{0};
 const color_t on_color = {1, 0.737, 0};

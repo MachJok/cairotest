@@ -8,17 +8,12 @@ CMakeFiles/cairobasic.dir/main.cpp.o
  libacfutils/include/acfutils/assert.h
  libacfutils/include/acfutils/core.h
  libacfutils/include/acfutils/geom.h
- libacfutils/include/acfutils/glew.h
  libacfutils/include/acfutils/libconfig.h
  libacfutils/include/acfutils/log.h
  libacfutils/include/acfutils/math.h
  libacfutils/include/acfutils/math_core.h
- libacfutils/include/acfutils/mt_cairo_render.h
- libacfutils/include/acfutils/safe_alloc.h
  libacfutils/include/acfutils/sysmacros.h
- libacfutils/include/acfutils/tls.h
  libacfutils/include/acfutils/types.h
- libacfutils/lin64/include/GL/glew.h
  libacfutils/lin64/include/cairo-deprecated.h
  libacfutils/lin64/include/cairo-features.h
  libacfutils/lin64/include/cairo-ft.h

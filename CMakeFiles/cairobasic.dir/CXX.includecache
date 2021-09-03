@@ -19,8 +19,6 @@ freetype/fttypes.h
 /home/crash/Desktop/Projects/Dev/cairobasic/freetype/fttypes.h
 cairo.h
 -
-acfutils/mt_cairo_render.h
--
 acfutils/math.h
 -
 cmath
@@ -78,18 +76,6 @@ libacfutils/include/acfutils/sysmacros.h
 types.h
 libacfutils/include/acfutils/types.h
 
-libacfutils/include/acfutils/glew.h
-pthread.h
--
-GL/glew.h
--
-core.h
-libacfutils/include/acfutils/core.h
-safe_alloc.h
-libacfutils/include/acfutils/safe_alloc.h
-tls.h
-libacfutils/include/acfutils/tls.h
-
 libacfutils/include/acfutils/libconfig.h
 
 libacfutils/include/acfutils/log.h
@@ -114,28 +100,6 @@ libacfutils/include/acfutils/assert.h
 core.h
 libacfutils/include/acfutils/core.h
 
-libacfutils/include/acfutils/mt_cairo_render.h
-cairo.h
--
-cairo-ft.h
--
-ft2build.h
--
-geom.h
-libacfutils/include/acfutils/geom.h
-glew.h
-libacfutils/include/acfutils/glew.h
-log.h
-libacfutils/include/acfutils/log.h
-
-libacfutils/include/acfutils/safe_alloc.h
-string.h
--
-stdlib.h
--
-assert.h
-libacfutils/include/acfutils/assert.h
-
 libacfutils/include/acfutils/sysmacros.h
 windows.h
 -
@@ -143,8 +107,6 @@ types.h
 libacfutils/include/acfutils/types.h
 sal.h
 -
-
-libacfutils/include/acfutils/tls.h
 
 libacfutils/include/acfutils/types.h
 stdint.h
@@ -156,22 +118,6 @@ limits.h
 core.h
 libacfutils/include/acfutils/core.h
 basetsd.h
--
-
-libacfutils/lin64/include/GL/glew.h
-stddef.h
--
-inttypes.h
--
-stdint.h
--
-inttypes.h
--
-Availability.h
--
-OpenGL/glu.h
--
-GL/glu.h
 -
 
 libacfutils/lin64/include/cairo-deprecated.h

@@ -7,17 +7,12 @@ CMakeFiles/cairobasic.dir/main.cpp.o: structs.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/assert.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/core.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/geom.h
-CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/glew.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/libconfig.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/log.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/math.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/math_core.h
-CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/mt_cairo_render.h
-CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/safe_alloc.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/sysmacros.h
-CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/tls.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/include/acfutils/types.h
-CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/lin64/include/GL/glew.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/lin64/include/cairo-deprecated.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/lin64/include/cairo-features.h
 CMakeFiles/cairobasic.dir/main.cpp.o: libacfutils/lin64/include/cairo-ft.h
